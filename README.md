@@ -27,8 +27,8 @@ The model connects a frozen vision encoder to a generative text decoder through 
 ````mermaid
 graph LR
     A[Image Input] -->|Patching| B[ViT Encoder]
-    B -->|Features (768 dim)| C[Connector MLP]
-    C -->|Projected Embeds (2048 dim)| D[Qwen Embedding Space]
+    B -->|Features 768 dim| C[Connector MLP]
+    C -->|Projected Embeds 2048 dim| D[Qwen Embedding Space]
     E[Text Prompts] -->|Tokenization| D
     D -->|Concatenation| F[Qwen2.5 LLM]
     F -->|Generation| G[Answer]
@@ -76,6 +76,7 @@ Qwen2.5-VQA/
     └── final_lora_model/
         ├── adapter_config.json
         └── adapter_model.safetensors
+```
 
 ---
 
@@ -90,6 +91,7 @@ Qwen2.5-VQA/
 └── data/                   # Dataset folder (only needed for training)
     ├── llava_instruct_150k.json
     └── coco2017/
+```
 
 ---
 
@@ -99,6 +101,7 @@ To train the connector and LoRA adapters on the mixed dataset:
 
 ```bash
 python train.py
+```
 
 ### Hyperparameters
 The default configuration (found in `train.py`) is optimized for a T4 or A10 GPU:
@@ -126,6 +129,7 @@ We provide a polished web interface using Streamlit. This supports **image uploa
 ### Run the App
 ```bash
 streamlit run app.py
+```
 
 ### Features
 * **Sidebar Upload:** Easily switch between local images or image URLs.
@@ -146,6 +150,7 @@ You are a helpful visual assistant.
 [IMAGE EMBEDDINGS] Describe this image.
 <|im_end|>
 <|im_start|>assistant
+```
 
 ### 2. Smart Resizing
 Standard resizing squashes images, destroying spatial relationships. We use a **Canvas Padding** approach:
@@ -154,12 +159,3 @@ Standard resizing squashes images, destroying spatial relationships. We use a **
 3.  This preserves aspect ratio, crucial for OCR and object detection tasks.
 
 ---
-
-## 🤝 Contributing
-
-Contributions are welcome! Please format your code using `black` and ensure type hints are present.
-
-## 📄 License
-
-MIT License. See `LICENSE` for details.
-````
