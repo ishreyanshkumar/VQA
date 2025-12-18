@@ -49,8 +49,8 @@ graph LR
 ### Setup
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/yourusername/Qwen2.5-VQA.git](https://github.com/yourusername/Qwen2.5-VQA.git)
-    cd Qwen2.5-VQA
+    git clone [https://github.com/ishreyanshkumar/VQA.git](https://github.com/ishreyanshkumar/VQA.git)
+    cd VQA
 
 2.  **Install dependencies:**
     ```bash
