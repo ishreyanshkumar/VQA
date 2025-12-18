@@ -32,7 +32,7 @@ graph LR
     E[Text Prompts] -->|Tokenization| D
     D -->|Concatenation| F[Qwen2.5 LLM]
     F -->|Generation| G[Answer]
-
+````
 1.  **Vision Encoder:** `google/vit-base-patch32-384` (Frozen). Extracts high-level visual features.
 2.  **Projection Layer (The "Connector"):** A custom 2-layer Multi-Layer Perceptron (Linear -> GELU -> Linear). It maps the visual vector space ($R^{768}$) to the LLM's token vector space ($R^{2048}$).
 3.  **LLM Backbone:** `Qwen/Qwen2.5-3B-Instruct`. We inject **LoRA adapters** into the attention mechanism (`q_proj`, `v_proj`, `k_proj`, `o_proj`) to fine-tune the model's reasoning capabilities without retraining the full weights.
