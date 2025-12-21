@@ -159,3 +159,34 @@ Standard resizing squashes images, destroying spatial relationships. We use a **
 3.  This preserves aspect ratio, crucial for OCR and object detection tasks.
 
 ---
+## 🚀 Future Improvements
+
+This project represents a solid baseline for a custom VQA architecture. However, several enhancements can be implemented to push performance closer to State-of-the-Art (SOTA) levels.
+
+### 1. Vision Encoder Upgrade
+* **Current:** `ViT-Base-Patch32-384` (optimized primarily for classification).
+* **Proposed:** Switch to **SigLIP-SO400M** or **CLIP-Large**.
+* **Why:** These models are specifically trained for image-text alignment rather than just classification, offering significantly better semantic understanding of complex scenes (e.g., distinguishing "a dog on a beach" vs. just "dog features").
+
+### 2. Advanced LoRA Tuning
+* **Current:** LoRA target modules are limited to attention layers (`q_proj`, `v_proj`, `k_proj`, `o_proj`).
+* **Proposed:** Target **MLP layers** as well (`gate_proj`, `up_proj`, `down_proj`).
+* **Why:** Research indicates that MLP layers in LLMs store a vast amount of factual knowledge. Fine-tuning them improves the model's reasoning capabilities and reduces hallucinations.
+
+### 3. Dynamic Resolution (AnyRes) Support
+* **Current:** All images are resized to a fixed square ($384 \times 384$), which causes distortion for tall or wide images.
+* **Proposed:** Implement a dynamic patching strategy (similar to LLaVA-NeXT or Qwen-VL).
+* **Why:** This involves cropping high-resolution images into multiple grids (e.g., 4 sub-patches) and feeding them alongside a global context view. This allows the model to "read" small text and see fine details without losing the overall context.
+
+### 4. Two-Stage Training Strategy
+* **Current:** Single-stage training where the connector and LoRA adapters are trained simultaneously.
+* **Proposed:**
+    * **Stage 1 (Pre-alignment):** Freeze the LLM and Vision Encoder; train *only* the Connector on large-scale caption pairs.
+    * **Stage 2 (Fine-tuning):** Unfreeze the LoRA adapters and train on high-quality instruction data.
+* **Why:** This "warm-up" phase ensures the visual features are properly aligned with the language space before the LLM tries to learn complex instructions, leading to faster convergence and better stability.
+
+### 5. Deployment Optimization
+* **Current:** Standard PyTorch inference.
+* **Proposed:**
+    * **Quantization:** Implement 4-bit (QLoRA) or 8-bit inference for lower memory usage.
+    * **vLLM / TGI:** Serve the model using high-performance inference engines like vLLM for faster token generation and concurrent user support.
