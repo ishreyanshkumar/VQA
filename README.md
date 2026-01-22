@@ -6,7 +6,7 @@
 ![Streamlit](https://img.shields.io/badge/UI-Streamlit-FF4B4B)
 ![Status](https://img.shields.io/badge/Status-Trained-success)
 
-A specialized Multimodal Large Language Model (MLLM) built by fusing a **Vision Transformer (ViT)** with **Qwen2.5-3B-Instruct**. Unlike standard implementations, this model features a custom trainable connector and was fine-tuned on a **diverse triad of datasets** to handle general visual conversations, text reading (OCR), and complex visual reasoning.
+A specialized Multimodal Large Language Model (MLLM) built by fusing a **Vision Transformer (ViT)** with **Qwen2.5-3B-Instruct**. Unlike standard implementations, this model features a custom trainable connector and was fine-tuned on a **diverse triad of datasets** to handle general visual conversations, text reading (OCR), and complex visual reasoning. 
 
 ## 🌟 Key Functionalities
 
