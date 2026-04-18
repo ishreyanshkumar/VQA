@@ -65,8 +65,8 @@ To run inference without training from scratch, download the trained weights and
 
 | Component | Filename | Description | Download Link |
 | :--- | :--- | :--- | :--- |
-| **Visual Connector** | `final_connector.pth` | Maps ViT features to Qwen space | [🔗 https://drive.google.com/file/d/16wqNg8PQOL05ET25NKpxCzsnA8LLcscd/view?usp=sharing](#) |
-| **LoRA Adapters** | `final_lora_model/` | Fine-tuned Qwen attention layers | [🔗 https://drive.google.com/file/d/16wqNg8PQOL05ET25NKpxCzsnA8LLcscd/view?usp=sharing](#) |
+| **Visual Connector** | `final_connector.pth` | Maps ViT features to Qwen space | [🔗 https://drive.google.com/file/d/16wqNg8PQOL05ET25NKpxCzsnA8LLcscd/view?usp=sharing](https://drive.google.com/file/d/16wqNg8PQOL05ET25NKpxCzsnA8LLcscd/view?usp=sharing) |
+| **LoRA Adapters** | `final_lora_model/` | Fine-tuned Qwen attention layers | [🔗 https://drive.google.com/file/d/16wqNg8PQOL05ET25NKpxCzsnA8LLcscd/view?usp=sharing](https://drive.google.com/file/d/16wqNg8PQOL05ET25NKpxCzsnA8LLcscd/view?usp=sharing) |
 
 **Directory setup after downloading:**
 ```text
